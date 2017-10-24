@@ -1,0 +1,9 @@
+---
+# short hostname or (fqdn) - this will be the system hostname
+hostname_name: "{{ inventory_hostname_short }}"
+# optional aliases to add to /etc/hosts for this host (ip)
+hostname_aliases: []
+# optional domain name, will be appened to hostname to create fqdn in /etc/hosts
+hostname_domain: ~
+# ip address to be associated w/ this host in /etc/hosts
+hostname_ip: "{{ ansible_default_ipv4.address }}"

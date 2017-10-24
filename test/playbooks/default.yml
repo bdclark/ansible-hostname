@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  roles:
+    - role: hostname
+  vars:
+    hostname_name: myserver
+    hostname_domain: example.com
+    hostname_aliases:
+      - myalias

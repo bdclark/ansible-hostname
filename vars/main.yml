@@ -1,0 +1,4 @@
+---
+hostname_domain_suffix: ".{{ hostname_domain | regex_replace('^\\.', '') }}"
+hostname_fqdn: "{% if hostname_domain == None %}{{ hostname_name }}{% elif hostname_name | regex_search(hostname_domain_suffix + '$') == None %}{{ hostname_name + hostname_domain_suffix }}{% else %}{{ hostname_name }}{% endif %}"
+hostname_line_parts: "{{ [hostname_ip, hostname_fqdn] + hostname_aliases }}"

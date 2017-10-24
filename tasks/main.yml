@@ -1,0 +1,11 @@
+---
+- name: set hostname
+  hostname:
+    name: "{{ hostname_name }}"
+
+- name: set hostname in /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    regexp: ^{{ hostname_ip }}\s+|\s+{{ hostname_fqdn }}(\s+|$)
+    line: "{{ ' '.join(hostname_line_parts) }}{% if hostname_fqdn.split('.')[0] not in hostname_line_parts %} {{ hostname_fqdn.split('.')[0] }}{% endif %}"
+    backup: yes
